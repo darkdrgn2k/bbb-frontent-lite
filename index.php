@@ -33,8 +33,8 @@ if ($_POST['action']=="Join") {
     $meetingSanitized= preg_replace("/[^a-zA-Z0-9]+/", "", $meeting);
     $nameSanitized= preg_replace("/[^a-zA-Z0-9]+/", "", $name);
 
-    // Check if meeting name and name is not empty and contains valid characters                                                                                                                                                              only
-    if ($meeting!="" && $name!="" && $meetingSanitized==$meeting && $nameSanitiz                                                                                                                                                             ed==$name) {
+    // Check if meeting name and name is not empty and contains valid characters only
+    if ($meeting!="" && $name!="" && $meetingSanitized==$meeting && $nameSanitized==$name) {
 
         //Create room
         $param = array (
@@ -47,9 +47,9 @@ if ($_POST['action']=="Join") {
         // ##TODO## success check
         $res= simplexml_load_string($res);
 
-        //If no one in room make first person moderator by using moderator passw                                                                                                                                                             ord, otherwise use attendee password
+        //If no one in room make first person moderator by using moderator password, otherwise use attendee password
         $password="none";
-        if ($res['hasUserJoined']==0) $password="admin"; //make first user moder                                                                                                                                                             ator
+        if ($res['hasUserJoined']==0) $password="admin"; //make first user moderator
 
 
         $param = array (
@@ -72,7 +72,7 @@ body {
   background: linear-gradient(-90deg,#1251AE 0,#0074FF 50%,#1251AE 100%);
   text-align:center;
   color:white;
-  font-family: -apple-system, BlinkMacSystemFont, open_sanslight, "Helvetica Neu                                                                                                                                                             e", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, open_sanslight, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 form {
   background: #ffffff;
@@ -112,20 +112,20 @@ cursor: pointer;
 }
 </style>
 <body>
-  <img src="https://raw.githubusercontent.com/bigbluebutton/greenlight/master/ap                                                                                                                                                             p/assets/images/logo_with_text.png" style="float:left;"><br><br><br><br>
+  <img src="https://raw.githubusercontent.com/bigbluebutton/greenlight/master/app/assets/images/logo_with_text.png" style="float:left;"><br><br><br><br>
   <h1>Start a BBB confrence call</h1>
-<div style=" width:680px;margin-left:calc(50% - 340px);font-weight: 400; line-he                                                                                                                                                             ight: 24px;">
-Go ahead, video chat with the whole team. In fact, invite everyone you know. BBB                                                                                                                                                              is a open source video conferencing solution that you can use all day, every da                                                                                                                                                             y, for free — with no account needed.
+<div style=" width:680px;margin-left:calc(50% - 340px);font-weight: 400; line-height: 24px;">
+Go ahead, video chat with the whole team. In fact, invite everyone you know. BBB is a open source video conferencing solution that you can use all day, every day, for free — with no account needed.
 </div>
 <br>
 
   <form method="post">
     <span style="font-size:18px; color: #253858;font-weight:bold;"><br>
     Start a new meeting called</span><br><br>
-    <input type="text" value="<?=$_REQUEST['meetingname']?>" name="meetingname">                                                                                                                                                             <br>
+    <input type="text" value="<?=$_REQUEST['meetingname']?>" name="meetingname"><br>
    <br>
    <br>
-   <span style="font-size:18px; color: #253858;font-weight:bold;">Your Name</spa                                                                                                                                                             n><br><input type="text" value="" name="yourname"><br>
+   <span style="font-size:18px; color: #253858;font-weight:bold;">Your Name</span><br><input type="text" value="" name="yourname"><br>
    <br><br>
 <center><input type="submit" value="Join"  name="action"></center>
 </form>
